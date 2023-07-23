@@ -1,0 +1,170 @@
+
+
+
+
+
+{% comment %} {% extends 'admin_base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Add district</title>
+
+            <style>
+                div.main {
+
+                    width: 300px;
+                    margin: 40px auto 10px auto;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                h1 {
+                    text-align: center;
+                    padding: 5px;
+                    color: rgb(13, 100, 100)
+                }
+
+                div.district {
+                    margin-top: 100px;
+                    width: 350px;
+                    height: 350px;
+                    font-size: 18px;
+                    border-radius: 15px;
+                    border: none;
+                    box-shadow: 1px 1px 15px rgb(182, 184, 184);
+                    color: #666;
+                }
+
+                form #register {
+                    margin: 50px;
+
+                }
+
+                input#name {
+                    margin-left: 20px;
+                    width: 300px;
+                    border: 1px solid teal;
+                    border-radius: 6px;
+                    padding: 8px;
+
+                }
+
+
+                input#pwd {
+                    margin-left: 20px;
+                    width: 300px;
+                    border: 1px solid teal;
+                    border-radius: 6px;
+                    padding: 8px;
+
+
+                }
+
+                select#did {
+                    margin-left: 20px;
+                    width: 300px;
+                    border: 1px solid teal;
+                    border-radius: 6px;
+                    padding: 8px;
+
+
+                }
+
+                button#submit {
+                    margin-left: 20px;
+                    width: 300px;
+                    padding: 8px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    font-family: sans serif;
+                    border: none;
+                    border-radius: 6px;
+                    background-color: rgb(2, 78, 78);
+                    color: #fff;
+                    cursor: pointer;
+                    border: none;
+
+                }
+
+                button#submit:hover {
+                    background-color: teal;
+
+                }
+
+                a {
+                    text-decoration: none;
+
+                }
+
+                a:hover {
+                    color: teal;
+
+                }
+            </style>
+        </head>
+
+    <body>
+        <div class="main">
+            {% comment %} {{messages}} {% endcomment %}
+            <div class="district">
+                <form id="register" method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <h1>Add Taluk</h1>
+                    <br>
+                    <select name="district" id="did">
+                        <option selected>--Choose your District--</option>
+                        {% for district in district %}
+                        <option value="{{ district.did }}">{{ district.district }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <br><br>
+                    <input type="text" id="name" name="taluk" placeholder="enter taluk">
+                    <br><br>
+
+                    <button type="submit" id="submit">Save</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+       
+    </body>
+
+    {% endblock %} {% endcomment %}
+
+
+    <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="district" id="did"  hx-get="{% url 'dis_list'%}">
+
+        <option selected>--Choose your District--</option>
+        {% for district in district %}
+            <option value="{{ district.did }}">{{ district.district }}</option>
+        {% endfor %}     
+    
+    </select>
+    
+</body>
+</html> -->

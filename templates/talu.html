@@ -1,0 +1,8 @@
+<select name="district" id="talu" >
+
+    <option selected>--Choose your District--</option>
+    {% for taluk in taluk %}
+        <option value="{{ taluk.pk}}">{{ taluk.taluk }}</option>
+    {% endfor %}     
+
+</select>

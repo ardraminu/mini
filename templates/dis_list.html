@@ -1,0 +1,41 @@
+{% comment %} {% block dt %} {% endcomment %}
+<select name="district" id="did"  hx-get="{% url 'talu' %}" hx-trigger="change" hx-target="#talu">
+
+    <option selected>--Choose your District--</option>
+    {% for district in district %}
+        <option value="{{ district.did }}">{{ district.district }}</option>
+    {% endfor %}     
+
+</select>
+<div id="talu">
+    {% include 'talu.html' %}
+</div>
+
+{% comment %} {% endblock dt %} {% endcomment %}
+
+
+
+
+            
+
+
+    <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="district" id="did"  hx-get="{% url 'dis_list'%}">
+
+        <option selected>--Choose your District--</option>
+        {% for district in district %}
+            <option value="{{ district.did }}">{{ district.district }}</option>
+        {% endfor %}     
+    
+    </select>
+    
+</body>
+</html> -->

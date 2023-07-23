@@ -1,0 +1,149 @@
+{% extends 'user_base.html' %}
+
+{% block title %} User slot booking {% endblock title %}
+
+{% block body %}
+
+<style>
+    div.main {
+
+        width: 500px;
+        margin: 40px auto 10px auto;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h3 {
+        text-align: center;
+        padding: 5px;
+        color: rgb(13, 100, 100)
+    }
+
+    div.regi{
+        margin-top: 50px;
+        width: 400px;
+        height: 400px;
+        font-size: 15px;
+        border-radius: 15px;
+        border: none;
+        box-shadow: 1px 1px 15px rgb(182, 184, 184);
+        color: #666;
+    }
+
+    label{
+        margin-left: 20px;
+        color: rgb(13, 100, 100)
+    }
+    form #register {
+        margin: 150px;
+
+    }
+    input#aadhar {
+        margin-left: 20px;
+        width: 350px;
+        border: 1px solid teal;
+        border-radius: 6px;
+        padding: 5px;
+
+    }
+
+    input#name {
+        margin-left: 20px;
+        width: 350px;
+        border: 1px solid teal;
+        border-radius: 6px;
+        padding: 8px;
+
+    }
+    
+ 
+    select#did {
+        margin-left: 20px;
+        width: 350px;
+        border: 1px solid teal;
+        border-radius: 6px;
+        padding: 8px;
+
+
+    }
+    input#date{
+        margin-left: 20px;
+        width: 350px;
+        border: 1px solid teal;
+        border-radius: 6px;
+        padding: 8px;
+
+    }
+
+
+    button#submit {
+        margin-left: 20px;
+        width: 350px;
+        padding: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: sans serif;
+        border: none;
+        border-radius: 6px;
+        background-color: rgb(2, 78, 78);
+        color: #fff;
+        cursor: pointer;
+        border: none;
+
+    }
+
+    button#submit:hover {
+        background-color: teal;
+
+    }
+
+    a {
+        text-decoration: none;
+
+    }
+
+    a:hover {
+        color: teal;
+
+    }
+</style>
+
+<div class="main">
+    {% comment %} {{messages}} {% endcomment %}
+    <div class="regi">
+        <form id="register" method="POST">
+            {% csrf_token %}
+            <br>
+            <h3>User Slot Bokking</h3><br>
+
+            <label for="aadhar">Aadhar Number:</label><br>
+            <input type="number" name="aadhar" id="aadhar" placeholder="enter aadhar number">
+            <br><br>
+
+            <label for="name">Name:</label><br>
+            <input type="text" name="name" id="name" placeholder="enter your name">
+            <br><br>
+
+            <select name="district" id="did" >
+                
+                <option selected>--Choose your District--</option>
+                {% for district in district %}
+                    <option value="{{ district.did }}">{{ district.district }}</option>
+                {% endfor %}         
+            </select>
+            <br><br>
+
+            
+            <label for="mintopay">Date to Book</label>
+            <br>
+            <input type="date" name="date" id="date">
+            <br><br>
+
+            <button type="submit" id="submit">Submit</button>
+            <br>
+
+        </form>
+    </div>
+    {% endblock body %}

@@ -1,0 +1,32 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+<div class="container  text-center">
+    <br>
+    <h3 >Taluk List </h3>
+    <hr>
+    <div class="col col-6 offset-2">
+        <table class="table table-striped dark offset-2">
+            <thead class="table-dark">
+                <tr>
+                    {% comment %} <th scope="col">District id </th> {% endcomment %}
+                    <th scope="col">District </th>
+                    <th scope="col">Taluk</th>
+        
+            </thead>
+            <tbody>
+                {% for i in Taluk %}
+                <tr>
+                    <th scope="row">{{ i.district}}</th>
+                    <td>{{ i.taluk }}</td>
+                </tr>
+                {% endfor %}
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

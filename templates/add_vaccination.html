@@ -1,0 +1,179 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add district</title>
+
+    <style>
+        div.main {
+
+            width: 300px;
+            margin: 40px auto 10px auto;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* h1 {
+            text-align: center;
+            padding: 5px;
+            color: rgb(13, 100, 100)
+        } */
+
+        div.vac {
+            margin-top: 50px;
+            width: 400px;
+            height: 550px;
+            font-size: 18px;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 1px 1px 15px rgb(182, 184, 184);
+            color: #666;
+        }
+
+        form #register {
+            margin: 50px;
+
+        }
+        label{
+            margin-left: 50px;
+            color: rgb(17, 136, 136)
+        }
+        h3{
+           color:teal;
+           font-family: verdana;
+           text-align: center;
+           padding: 5px;
+        }
+
+        input#name {
+            margin-left: 50px;
+            width: 300px;
+            border: 1px solid teal;
+            border-radius: 6px;
+            padding: 8px;
+
+        }
+
+
+        input#aadhar {
+            margin-left: 50px;
+            width: 300px;
+            border: 1px solid teal;
+            border-radius: 6px;
+            padding: 8px;
+
+
+        }
+
+        select#did {
+            margin-left: 50px;
+            width: 300px;
+            border: 1px solid teal;
+            border-radius: 6px;
+            padding: 8px;
+
+
+        }
+
+        select#vid {
+            margin-left: 50px;
+            width: 300px;
+            border: 1px solid teal;
+            border-radius: 6px;
+            padding: 8px;
+
+
+        }
+
+        input#date_avail {
+            margin-left: 50px;
+            width: 300px;
+            border: 1px solid teal;
+            border-radius: 6px;
+            padding: 8px;
+
+        }
+
+
+        button#submit {
+            margin-left: 50px;
+            width: 300px;
+            padding: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: sans serif;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(2, 78, 78);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+
+        }
+
+        button#submit:hover {
+            background-color: teal;
+
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        a:hover {
+            color: teal;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        {% comment %} {{messages}} {% endcomment %}
+        <div class="vac">
+            <form id="register" method="POST">
+                {% csrf_token %}
+                <br><br>
+                <h3> ADD VACCINATION</h3>
+                <br>
+
+                <label for="aadhar">Aadhar Number:</label><br>
+                <input type="number" name="aadhar" id="aadhar" placeholder="enter aadhar number">
+                <br>
+
+                <label for="name">Name:</label><br>
+                <input type="text" name="name" id="name" placeholder="enter your name">
+                <br><br>
+
+                <label for="name">Vaccine Name:</label><br>
+                
+                <select name="vaccine" id="vid">
+                    <option selected>-- Choose the vaccine --</option>
+                    {% for v in Vaccine %}
+                    <option value="{{ v.vid }}">{{ v.vname }}</option>
+                    {% endfor %}
+                </select> 
+
+                <label for="mintopay">Date of Dose1:</label>
+                <br>
+                <input type="date" name="date_avail1" id="date_avail">
+                <br><br>
+
+
+                <button type="submit" id="submit">Save</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

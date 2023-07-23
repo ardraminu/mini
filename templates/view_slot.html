@@ -1,0 +1,36 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+<div class="container  text-center">
+    <br>
+    <h3>view slot booking</h3>
+  
+    <hr>  <br>
+    <div class="col col-8offset-2">
+        <table class="table table-striped dark ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Aadhar ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Booked Date</th>
+
+            </thead>
+
+            <tbody>
+                {% for i in User_vaccine_registration %}
+                <tr>
+                    <th scope="row">{{ i.aadhar }}</th>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.did }}</td>
+                    <td>{{ i.date }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

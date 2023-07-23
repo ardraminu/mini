@@ -1,0 +1,42 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+
+<div class="container  text-center">
+    <br>
+    <h3 >Vaccine List </h3>
+    <hr> <br>
+    <div class="col col-6 offset-2">
+        <table class="table table-striped dark offset-2">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Vaccine ID</th>
+                    <th scope="col">Vaccine </th>
+                    <th scope="col">Action </th>
+        
+            </thead>
+            <tbody>
+                {% for item in Vaccine %}
+                <tr>
+                    <th scope="row">{{ item.vid }}</th>
+                    <td>{{ item.vname }}</td>
+                    <td>
+                        <form action="{% url 'delete_vaccine' item.vid %}" method="post">
+                            {% csrf_token %}                          
+                            <button type="submit" class="btn btn-outline-danger">Delete</button>    
+                        </form>
+                        
+                       
+                    </td>
+                </tr>
+                {% endfor %}
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

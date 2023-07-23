@@ -1,0 +1,42 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+<div class="container  text-center">
+    <br>
+    <h3>User Records</h3>
+  
+    <hr>  <br>
+    <div class="col col-8offset-2">
+        <table class="table table-striped dark ">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Aadhar ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                   
+
+
+            </thead>
+            <tbody>
+                {% for i in User %}
+                <tr>
+                    <th scope="row">{{ i.aadhar }}</th>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.age }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.phone }}</td>
+                    <td>{{ i.email }}</td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

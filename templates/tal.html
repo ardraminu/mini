@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{district}}
+
+    <div class="main">
+       
+        <div class="district">
+           <form id="register" method="POST"> 
+                 {% csrf_token %} 
+                <br>
+                <h1>Add Taluk</h1>
+                <br>  
+                
+                
+                <select name="district" id="did"  hx-get="{% url 'tal'%}">
+                
+                    <option selected>--Choose your District--</option>
+                    {% for district in district %}
+                        <option value="{{ district.did }}">{{ district.district }}</option>
+                    {% endfor %}         
+                </select>
+                
+                <br>  <br>
+                <input type="text" id="name" name="taluk" placeholder="enter taluk">
+                <br><br>
+
+                <button type="submit" id="submit">Save</button>
+                <br><br>
+            </form> 
+        </div>
+    </div>
+    
+</body>
+</html>
