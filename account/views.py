@@ -32,7 +32,7 @@ def signup(request):
 def login(request):
      if request.method =='POST':
         username = request.POST.get('username')
-        pass1= request.POST.get('password')
+        pass1 = request.POST.get('password')
         user = authenticate(request,username=username,password=pass1)
 
         if user is not None:

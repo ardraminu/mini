@@ -138,8 +138,10 @@
                 <select name="district" id="did"  hx-get="{% url 'taluk' %}" hx-trigger="change" hx-target="#tal" >
                 
                     <option selected>--Choose your District--</option>
-                    {% for district in district %}
-                        <option value="{{ district.did }}">{{ district.district }}</option>
+                    {% for d in district %}
+                       
+                    {% comment %} <option value="{{ d.did }}" >{{ d.district }}</option>  {% endcomment %}
+                    <option value="{{ d.did }}" {% if d.did == selected_district_id %}selected{% endif %}>{{ d.district }}</option> 
                     {% endfor %}         
                 </select><br>  <br>
 

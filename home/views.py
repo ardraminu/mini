@@ -29,8 +29,7 @@ def view_district(request):
 
 
 # --------------------------Taluk----------------------------------
-def taluk(request):
-    
+def taluk(request):    
         district = District.objects.all()
         context = {
             'district': district,
@@ -38,6 +37,8 @@ def taluk(request):
         }
 
         if request.method == 'POST': 
+           district_id = request.POST.get('district') 
+           district = District.objects.get(pk=district_id)
            taluk = request.POST.get('taluk')
            t = Taluk(district=district, taluk=taluk) 
            t.save()
@@ -114,26 +115,53 @@ def view_user(request,pk):
 # ------------------------------------------------------------------------------
     
 def vaccine_center(request):
-  
-        district = District.objects.all()
-        # tal = Taluk.objects.all()
-        tal = Taluk.objects.filter(district)
-        
+        district = District.objects.all()  
+        if request.method =='POST': 
+            
+            district_id = request.POST.get('district')
+            print( district_id)
+            if district_id:
+              selected_district = District.objects.get(pk=district_id)
+              selected_district_id = district_id
+              taluk = Taluk.objects.filter(district=selected_district)
+            else:
+              taluk = Taluk.objects.none()
+
+        else:
+           taluk = Taluk.objects.none()
+           district_id = None
+
+        #    center_name = request.POST.get('center_name')
+        #    date_avail1 = request.POST.get('date_avail1')
+        #    date_avail2 = request.POST.get('date_avail2')
+
+        #    center = Vaccine_center(district=district, taluk=taluk, center_name=center_name, date_avail1=date_avail1, date_avail2=date_avail2)      
+        #    center.save()
         context = {
              'district': district ,
-             'taluk':tal,
+             'taluk':taluk,
+             'selected_district_id':district_id
         }
-        if request.method =='POST': 
-           center_name = request.POST.get('center_name')
-           date_avail1 = request.POST.get('date_avail1')
-           date_avail2 = request.POST.get('date_avail2')
-
-           center = Vaccine_center(district=district, taluk=taluk, center_name=center_name, date_avail1=date_avail1, date_avail2=date_avail2)      
-           center.save()
-
-           messages.success(request, 'Item Added Successfully!')
+        # print(str(context))
+        #    messages.success(request, 'Item Added Successfully!')
         return render(request,'vaccine_center.html', context) 
 
+
+
+# ============================
+# def vaccine_center(request):
+#     if request.method == 'POST':
+#         district_id = request.POST.get('district')
+#         if district_id:
+#             selected_district = District.objects.get(pk=district_id)
+#             taluks = Taluk.objects.filter(district=selected_district)
+#         else:
+#             taluks = Taluk.objects.none()
+#     else:
+#         taluks = Taluk.objects.none()
+
+#     districts = District.objects.all()
+#     return render(request, 'vaccine_center.html', {'districts': districts, 'taluks': taluks})
 
 #=====================================================================
 
